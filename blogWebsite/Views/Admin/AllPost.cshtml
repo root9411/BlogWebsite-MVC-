@@ -1,0 +1,54 @@
+﻿@using blogWebsite
+@model IEnumerable<Post>
+
+<h2>
+    All Blog Post
+</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Title</td>
+                <td>@item.Date</td>
+                <td>
+                    <a class="btn btn-success" asp-action="updatePost" asp-controller="Admin" asp-route-Id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#logoutModal">Delete</a>
+                </td>
+            </tr>
+
+            <!-- Create Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Delete Post?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    <div class="modal-body">Click "Delete Post" below if you are ready to Delete The Blog.</div>
+                        <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" asp-action="DeletePost" asp-controller="Admin" asp-route-Id="@item.Id">Delete Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </tbody>
+</table
+
+

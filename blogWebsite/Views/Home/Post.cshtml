@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Post";
+}
+
+@using blogWebsite.Models
+@using System.Web;
+@model Post
+
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="w3-card-4 w3-margin w3-white">
+    <img src="~/images/@Model.Image" alt="Nature" style="width:100%">
+    <div class="w3-container">
+        <h3><b>@Model.Title</b></h3>
+        <h5>@Model.SubTitle <span class="w3-opacity">@Model.Date</span></h5>
+    </div>
+
+    <div class="w3-container">
+        <p>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+        </p>
+        <div class="w3-row">
+            
+        </div>
+    </div>
+</div>

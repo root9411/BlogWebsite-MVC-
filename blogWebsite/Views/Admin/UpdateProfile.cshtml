@@ -1,0 +1,81 @@
+﻿@using blogWebsite.ViewModel;
+@model ProfileVM
+<div class="container">
+    <div class="row align-content-end">
+        <div class="col-md-10">
+            <form method="post" enctype="multipart/form-data" asp-action="UpdateProfile" asp-controller="Admin">
+                    
+
+                    <div class="col-md-6 align-item-center">
+                        <div class="form-group">
+                            <input value ="@ViewData["ImageName"] " class="form-control" hidden name="oldPic"/>
+                            <img src="/Images/@ViewData["ImageName"]" width="200px" height="200px" />
+                        </div>
+                    </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Id" class="form-label"></label>
+                        <input asp-for="Id" readonly class="form-control" />
+                    </div>
+                </div>
+                    
+                <div class="row align-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" readonly class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="FatherName" class="form-label"></label>
+                            <input asp-for="FatherName" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row align-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Image" class="form-label"></label>
+                            <input asp-for="Image" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="username" class="form-label"></label>
+                            <input asp-for="username" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Bio" class="form-label"></label>
+                    <textarea asp-for="Bio" class="form-control"></textarea>
+                </div>
+
+                <div class="row align-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="form-label"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

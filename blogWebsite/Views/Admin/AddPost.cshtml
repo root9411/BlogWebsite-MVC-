@@ -1,0 +1,90 @@
+﻿@using blogWebsite
+@using blogWebsite.ViewModel;
+@model PostVM
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-mid-10 w-75" >
+            <h2>
+                Add New Post
+            </h2>
+            <form method="post" asp-controller="Admin" asp-action="AddPost" enctype="multipart/form-data">
+                
+                <div class="row justify-content-center">         
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" asp-for="Title"></label>
+                            <input class="form-control" asp-for="Title"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" asp-for="SubTitle"></label>
+                            <input class="form-control" asp-for="SubTitle" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" asp-for="Date"></label>
+                            <input class="form-control" asp-for="Date" value="@DateTime.Now.ToString("dd/MM/yyyy")" readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" asp-for="Slug"></label>
+                            <input class="form-control" asp-for="Slug" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Image"></label>
+                    <input class="form-control" asp-for="Image" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Content"></label>
+                    <textarea class="form-control" asp-for="Content" id="editor">
+                     
+                    </textarea>
+                </div>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#CreateModal">Create Post</a>
+                
+                
+                <!-- Create Modal-->
+                <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ready to Post?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Click "Confirm Post" below if you are ready to Post The Blog.</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-primary" type="submit">Confirm  Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>

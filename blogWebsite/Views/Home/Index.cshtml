@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using System.Web;
+@using blogWebsite.Models
+@model IEnumerable<Post>
+@foreach(var item in Model)
+{
+    
+
+
+<!-- Blog Entry -->
+
+<div class="w3-card-4 w3-margin w3-white">
+    <img src="../images/@item.Image" alt="Nature" style="width:100%">
+    <div class="w3-container">
+      <h3><b>@item.Title</b></h3>
+      <h5>@item.SubTitle<span class="w3-opacity">@item.Date</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>
+          
+          @if(item.Content.Length < 100)
+                {
+                    @Html.Raw(HttpUtility.HtmlDecode(item.Content))
+                }
+                else
+                {
+                    @Html.Raw(HttpUtility.HtmlDecode(item.Content.Substring(0,100)));
+                }
+
+      </p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p>
+              <a class="w3-button w3-padding-large w3-white w3-border" asp-controller="Home" asp-action="Post" asp-route-Slug="@item.Slug" ><b>READ MORE »</b></a>
+          </p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- END Blog Entry -->
+
+}
